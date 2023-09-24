@@ -1,0 +1,115 @@
+HOME PAGE: 
+
+- Turning Vision Into Reality With Code And Design. 
+- As a skilled full-stack developer, I am dedicated to turning ideas into innovative web applications. 
+Explore my latest projects and articles, showcasing my expertise in React.js and Node.js.
+
+--------------------------------------------------------------
+
+ABOUT PAGE:
+
+- Devotion Sparks Objective!
+- Greetings, I'm Disha Biswas, a proficient web developer and a dedicated UI/UX designer, driven by a fervor for crafting exquisite, pragmatic, and user-centric digital interfaces. I am perpetually in pursuit of novel and pioneering methods to breathe life into my clients' creative aspirations.
+
+- I hold the conviction that design transcends mere aesthetics; it's a means to tackle challenges and foster seamless, delightful interactions for users.
+
+- Whether I'm engaged in crafting a website, developing a mobile app, or shaping any digital creation, my unwavering dedication to design's highest standards and user-centric philosophy permeates every endeavor. I eagerly anticipate the prospect of channeling my expertise and zeal into your forthcoming project.
+
+- My overarching vision centers on aiding individuals by translating code into solutions, while my ultimate purpose revolves around continuous technological enlightenment and growth.
+
+--------------------------------------------------------------
+
+EXPERIENCE: 
+
+Fullstack Engineer @Zigy
+Aug, 2023 - Present | Remote
+- Developed integrated Chat application (One-on-One chat) for E-commerce website using Socket.io and NodeJS,
+integrating with MongoDB Atlas in the backend and in the frontend developing chat ui using ReactJS.
+- Added oAuth authentication using Google and JWT authentication for user login.
+- Used agile methodologies and best practices to deliver quality solutions on time and within budget. Designed and
+developed features, ensuring code adhered to standards.
+
+Teaching Assistant @Rangmashal Foundation
+Feb, 2023 - Sept, 2023  | Kolkata, India.
+- Contributed my expertise by co-instructing a computer course for underprivileged students at a non-profit organization, empowering them with essential digital skills.
+- In this rewarding experience, I helped bridge the digital divide, equipping these students with valuable knowledge to navigate the digital landscape.
+- Witnessing their newfound confidence and potential was a testament to the impact of education and empowerment.
+
+UI/UX Designer @Smart India Hackathon
+Aug, 2023 | Chennai, India.
+- We built the app by using Flutter(frontend) and Python(backend). My part was to build the design.
+- This is an educational app that allows the Teacher to track the student’s performance in a classroom to know who’s
+understanding the class work and who’s not. But here the teacher only has access to the smart device and the student
+will give the answer asked by the teacher by using pen-paper mode
+
+
+Hackathon participant, Backend Developer @Hack4bengaal
+July, 2023 | Kolkata, India
+- In this hackathon we built a web app which will help you to find a Helper to help in your daily household activities(as
+per your need, e.g. - house help, driver, cook, nightguard, home tutors, caretaker, etc.). The person who wants to help
+can open their account by submitting a form and their expectations from the job and the person who wants help can
+search them by watching their profiles, location, availability, and experience.
+- We have used the popular stack MERN stack and I handled the Backend part.
+- I built REST apis and stored the user data in MongoDB database. And have implemented the JWT
+authentication
+
+
+
+--------------------------------------------------------------
+
+EDUCATION:
+
+Bachelor Of Science In Computer Science
+2016-2020 | Massachusetts Institute Of Technology (MIT)
+Relevant courses included Data Structures and Algorithms, Computer Systems Engineering, and Artificial 
+Intelligence.
+
+Master Of Computer Science
+2020-2022 | Stanford University
+Completed a master's project on deep learning, developing a new neural network architecture for natural 
+language understanding.
+
+Online Coursework
+2016-2020 | Coursera And EdX
+Completed coursework in advanced topics such as Reinforcement Learning, Computer Vision, and Machine 
+Learning Engineering.
+
+--------------------------------------------------------------
+
+PROJECTS PAGE:
+
+- Imagination Trumps Knowledge!
+
+
+
+--------------------------------------------------------------
+
+ARTICLES PAGE:
+
+- Words Can Change The World! 
+
+Build A Custom Pagination Component In Reactjs From Scratch
+Learn how to build a custom pagination component in ReactJS from scratch. 
+Follow this step-by-step guide to integrate Pagination component in your ReactJS project.
+9 min read
+
+Creating Stunning Loading Screens In React: Build 3 Types Of Loading Screens
+Learn how to create stunning loading screens in React with 3 different methods. 
+Discover how to use React-Loading, React-Lottie & build a custom loading screen. 
+Improve the user experience.
+10 min read
+
+Form Validation In Reactjs: Build A Reusable Custom Hook For Inputs And Error Handling
+
+Silky Smooth Scrolling In Reactjs: A Step-By-Step Guide For React Developers
+
+Creating An Efficient Modal Component In React Using Hooks And Portals
+
+Build A Fabulous Todo List App With React, Redux And Framer-Motion
+
+Redux Simplified: A Beginner's Guide For Web Developers
+
+What Is Higher Order Component (Hoc) In React?
+
+
+
