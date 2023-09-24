@@ -5,6 +5,8 @@ import Image from "next/image";
 import pp from "../../public/images/profile/avatar.png";
 import Link from "next/link";
 import { LinkArrow } from "@/components/Icons";
+import HireMe from "@/components/HireMe";
+import lightBulb from "../../public/images/svgs/miscellaneous_icons_1.svg";
 
 export default function Home() {
   return (
@@ -20,12 +22,12 @@ export default function Home() {
               <Image
                 src={pp}
                 alt="Disha"
-                className="w-2/3 h-auto mt-[-130px]"
+                className="w-2/3 h-auto mt-[-50px]"
                 style={{ marginLeft: "25%" }}
               />
             </div>
             <div
-              className="w-1/2 flex flex-col items-center self-center mt-[-130px]"
+              className="w-1/2 flex flex-col items-center self-center mt-[-40px]"
               style={{ marginRight: "12%" }}
             >
               <AnimatedText
@@ -47,7 +49,7 @@ export default function Home() {
                 >
                   Resume <LinkArrow className={"w-6 ml-1"}/>
                 </Link>
-                <Link href="mailto:dishabiswas010@gmail.com" target={"blank"}
+                <Link href="mailto:bidisha2125@gmail.com" target={"blank"}
                 className="ml-4 text-lg font-medium capitalize text-dark underline">
                   Contact
                 </Link>
@@ -55,6 +57,10 @@ export default function Home() {
             </div>
           </div>
         </Layout>
+        <HireMe/>
+        <div className="absolute right-8 bottom-8 inline-block w-24">
+          <Image src={lightBulb} alt="Disha" className="w-full h-auto"/>
+        </div>
       </main>
     </>
   );
