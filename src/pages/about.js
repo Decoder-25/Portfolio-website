@@ -4,6 +4,7 @@ import AnimatedText from "@/components/AnimatedText";
 import Layout from "@/components/Layout";
 import pp from "../../public/images/profile/about me.png";
 import Image from "next/image";
+import Skills from "@/components/Skills";
 
 const about = () => {
   return (
@@ -27,11 +28,12 @@ const about = () => {
                 About Me
               </h2>
               <p className="font-medium">
-                - Greetings, I&apos;m Disha Biswas, a proficient FullStack developer and a
-                dedicated UI/UX designer, driven by a fervor for crafting
-                exquisite, pragmatic, and user-centric digital interfaces. I am
-                perpetually in pursuit of novel and pioneering methods to
-                breathe life into my clients&apos; creative aspirations.
+                - Greetings, I&apos;m Disha Biswas, a proficient FullStack
+                developer and a dedicated UI/UX designer, driven by a fervor for
+                crafting exquisite, pragmatic, and user-centric digital
+                interfaces. I am perpetually in pursuit of novel and pioneering
+                methods to breathe life into my clients&apos; creative
+                aspirations.
               </p>
               <p className="font-medium my-4">
                 - I hold the conviction that design transcends mere aesthetics;
@@ -42,8 +44,9 @@ const about = () => {
                 - I have extensive experience in web development using various
                 technologies such as React, Node.js, Socket.io, Express,
                 MongoDB, MySQL, Next.js, and Docker. These tools enable me to
-                create dynamic and efficient web applications, and I&apos;m always
-                eager to explore new technologies and expand my skill set.
+                create dynamic and efficient web applications, and I&apos;m
+                always eager to explore new technologies and expand my skill
+                set.
               </p>
               <p className="font-medium">
                 - My overarching vision centers on aiding individuals by
@@ -53,7 +56,7 @@ const about = () => {
               </p>
             </div>
             <div className="text-center md:text-right md:w-1/3 flex justify-end">
-                          <div className="max-w-sm mx-auto md:mx-0 rounded-2xl border-2 border-solid border-dark">
+              <div className="max-w-sm mx-auto md:mx-0 rounded-2xl border-2 border-solid border-dark">
                 <Image
                   src={pp}
                   alt="Disha"
@@ -63,6 +66,7 @@ const about = () => {
               </div>
             </div>
           </div>
+          <Skills />
         </Layout>
       </main>
     </>
