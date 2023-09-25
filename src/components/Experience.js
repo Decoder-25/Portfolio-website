@@ -26,7 +26,7 @@ const Details = ({ position, company, companyLink, time, location, work }) => {
                 <span className="capitalize font-medium text-dark/75">
                     {time} | {location}
                 </span>
-                <ul className="list-disc list-inside">
+                <ul className="list-disc list-inside font-medium">
                     {work.map((point, index) => (
                         <li key={index}>{point}</li>
                     ))}
