@@ -43,7 +43,7 @@ understanding the class work and who’s not. But here the teacher only has acce
 will give the answer asked by the teacher by using pen-paper mode
 
 
-Hackathon participant, Backend Developer @Hack4bengaal
+Backend Developer @Hack4bengaal
 July, 2023 | Kolkata, India
 - In this hackathon we built a web app which will help you to find a Helper to help in your daily household activities(as
 per your need, e.g. - house help, driver, cook, nightguard, home tutors, caretaker, etc.). The person who wants to help

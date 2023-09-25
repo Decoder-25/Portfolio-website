@@ -5,6 +5,7 @@ import Layout from "@/components/Layout";
 import pp from "../../public/images/profile/about me.png";
 import Image from "next/image";
 import Skills from "@/components/Skills";
+import Experience from "@/components/Experience";
 
 const about = () => {
   return (
@@ -67,6 +68,7 @@ const about = () => {
             </div>
           </div>
           <Skills />
+          <Experience/>
         </Layout>
       </main>
     </>
