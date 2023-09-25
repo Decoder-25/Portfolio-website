@@ -24,7 +24,12 @@ const Navbar = () => {
         <CustomLink href="/" title="Home" className="mr-4" />
         <CustomLink href="/about" title="About" className="mx-4" />
         <CustomLink href="/projects" title="Projects" className="mx-4" />
-        <CustomLink href="/articles" title="Articles" className="ml-4" />
+        <CustomLink
+          href="https://disha404.hashnode.dev/"
+          target="_blank"
+          title="Articles"
+          className="ml-4"
+        />
       </nav>
       <nav className="flex items-center justify-center flex-wrap">
         <motion.a href="https://twitter.com/decode_py" target={"_blank"} whileHover={{y: -2}} whiletap={{scale:0.9}} className="w-6 mx-3">
