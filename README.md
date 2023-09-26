@@ -8,6 +8,10 @@ Welcome to my stunning portfolio website project! This website showcases my skil
 - **Framer Motion**: A library for adding smooth animations and transitions to web elements.
 - **Tailwind CSS**: A utility-first CSS framework for rapidly styling web components. 🚀
 
+## 🌐 Deployment
+
+The live deployment of this portfolio website is available at [https://portfolio-website-psi-kohl.vercel.app/](https://portfolio-website-psi-kohl.vercel.app/). Check it out! 🚀
+
 ## 🚀 Getting Started
 
 ### Prerequisites
