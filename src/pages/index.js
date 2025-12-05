@@ -2,7 +2,7 @@ import Layout from "@/components/Layout";
 import AnimatedText from "@/components/AnimatedText";
 import Head from "next/head";
 import Image from "next/image";
-import pp from "../../public/images/profile/avatar.png";
+import pp from "../../public/images/profile/avatar2.png";
 import Link from "next/link";
 import { LinkArrow } from "@/components/Icons";
 import HireMe from "@/components/HireMe";
@@ -31,14 +31,11 @@ export default function Home() {
               style={{ marginRight: "12%" }}
             >
               <AnimatedText
-                text="Turning Vision Into Reality With Code And Design. "
+                text="Turning Vision Into Reality With Code And Cloud. "
                 className="!text-5xl !text-left"
               />
               <p className="my-4 text-base font-medium">
-                As a skilled full-stack developer, I am dedicated to turning
-                ideas into innovative web applications. Explore my latest
-                projects and articles, showcasing my expertise in React.js and
-                Node.js.
+              I’m Disha, a full-stack developer and AWS Certified professional with an MSc in Computer Science. I build scalable applications using React, Next.js, Node.js, and AWS, focusing on clean code and reliable cloud architecture.
               </p>
               <div className="flex items-center self-start mt-2">
                 <Link
