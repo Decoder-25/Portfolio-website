@@ -18,7 +18,7 @@ const Details = ({ position, company, companyLink, time, location, work }) => {
         transition={{ duration: 0.5, type: "spring" }}
       >
         <h3 className="capitalize font-bold text-2xl">
-          {position}&nbsp;
+          {position}&nbsp;{" "}
           <a
             href={companyLink}
             target="_blank"
@@ -48,101 +48,103 @@ const Experience = () => {
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "center start"],
+    // ✅ CHANGED: smoother across full section (fixes “fills too fast” with long content)
+    offset: ["start end", "end start"],
   });
 
-  // Date-wise: most recent -> oldest
-  const experiences = [
-    {
-      position: "Backend Developer (MSc Dissertation Project)",
-      company: "Decision Support Tool for Cyber Security Investment",
-      companyLink: "#",
-      time: "2025",
-      location: "University of Exeter, UK",
-      work: [
-        "Designed and developed a decision-support web application to optimise cyber security investment portfolios under budget constraints.",
-        "Built backend services using Python and FastAPI to model security controls, indirect costs, and risk reduction, applying linear programming optimisation with PuLP.",
-        "Extended the system with attack-graph–based reasoning and resilience/uncertainty handling to produce more realistic and robust investment recommendations.",
-        "Containerised backend services and deployed the application on AWS using ECS with Fargate, gaining hands-on experience with cloud-native deployment patterns.",
-        "Configured supporting AWS infrastructure including EC2, IAM, ECR, CloudWatch, and Application Load Balancers to enable secure and observable deployments.",
-        "Experimented with CI/CD workflows using AWS CodePipeline and CodeDeploy to automate build and deployment stages, simulating real-world production pipelines.",
-        "Focused on clean API design, validation, and maintainable architecture so the system can scale beyond an academic prototype into a production-ready service.",
-      ],
-    },
-    {
-      position: "FullStack Developer",
-      company: "Zigy Prints",
-      companyLink: "https://www.linkedin.com/company/zigycustoms/about/",
-      time: "Aug 2023 – Present",
-      location: "Remote",
-      work: [
-        "Built and shipped a real-time 1:1 chat feature for an e-commerce product using Socket.io and Node.js.",
-        "Integrated MongoDB Atlas for message storage and user data, and developed the chat UI in React.",
-        "Implemented secure authentication using Google OAuth and JWT-based sessions.",
-        "Worked in an agile workflow, delivering features with attention to code quality, maintainability, and deadlines.",
-      ],
-    },
-    {
-      position: "Backend Developer (Hackathon Project)",
-      company: "Hack4Bengal",
-      companyLink: "https://www.hack4bengal.tech/",
-      time: "Jul 2023",
-      location: "Kolkata, India",
-      work: [
-        "Built REST APIs for a MERN web app that connects users with local helpers (cook, driver, tutor, caretaker, etc.).",
-        "Designed backend flows for onboarding, profiles, search filters (location/availability), and basic role-based access.",
-        "Implemented JWT authentication and persisted application data in MongoDB.",
-        "Collaborated in a fast-paced team environment and delivered a working product within hackathon constraints.",
-      ],
-    },
-    {
-      position: "Teaching Assistant",
-      company: "Rangmashal Foundation",
-      companyLink: "https://www.rangmashal.org/",
-      time: "Feb 2023 – Sep 2023",
-      location: "Kolkata, India",
-      work: [
-        "Co-taught computer fundamentals to underprivileged students and supported them through practical exercises.",
-        "Helped learners build confidence with basic tools, internet usage, and problem-solving with technology.",
-        "Improved communication by breaking down complex concepts into simple, structured explanations.",
-      ],
-    },
-    {
-      position: "UI/UX Designer (Hackathon Team Project)",
-      company: "Smart India Hackathon",
-      companyLink: "https://www.sih.gov.in/",
-      time: "Aug 2022",
-      location: "Chennai, India",
-      work: [
-        "Collaborated with the team to design UI flows and screens for an education-focused application.",
-        "Worked closely with developers to ensure designs were feasible and consistent across the product.",
-        "Contributed to building a clean and usable interface under tight hackathon timelines.",
-      ],
-    },
+  const mscProjectDetails = [
+    "Building a decision-support web application to optimise cyber security investment portfolios under budget constraints.",
+    "Developing backend services using Python and FastAPI, modelling controls, indirect costs, and risk reduction with optimisation using linear programming (PuLP).",
+    "Extending the system with attack-graph based reasoning and resilience/uncertainty handling to make recommendations more realistic.",
+    "Deployed the project on AWS with hands-on cloud work: containerised services, deployed via ECS + Fargate, configured IAM, CloudWatch, and Load Balancer setup.",
+    "Also deployed and tested the application using EC2 and Elastic Beanstalk to compare deployment approaches and understand trade-offs in real environments.",
+    "Experimented with CI/CD using CodePipeline and CodeDeploy to understand real deployment workflows end-to-end.",
+  ];
+
+  const workDetails = [
+    [
+      "Developed integrated Chat application (One-on-One chat) for E-commerce website using Socket.io and NodeJS, integrating with MongoDB Atlas in the backend and in the frontend developing chat ui using ReactJS.",
+      "Added oAuth authentication using Google and JWT authentication for user login.",
+      "Used agile methodologies and best practices to deliver quality solutions on time and within budget.",
+      "Designed and developed features, ensuring code adhered to standards.",
+    ],
+    [
+      "Contributed my expertise by co-instructing a computer course for underprivileged students at a non-profit organization, empowering them with essential digital skills.",
+      "In this rewarding experience, I helped bridge the digital divide, equipping these students with valuable knowledge to navigate the digital landscape.",
+      "Witnessing their newfound confidence and potential was a testament to the impact of education and empowerment.",
+    ],
+    [
+      "We built the app by using Flutter(frontend) and Python(backend). My part was to build the design.",
+      "This is an educational app that allows the Teacher to track the student’s performance in a classroom to know who’s understanding the class work and who’s not.",
+      "But here the teacher only has access to the smart device and the student will give the answer asked by the teacher by using pen-paper mode.",
+    ],
+    [
+      "In this hackathon we built a web app which will help you to find a Helper to help in your daily household activities(as per your need, e.g. - house help, driver, cook, nightguard, home tutors, caretaker, etc.).",
+      "The person who wants to help can open their account by submitting a form and their expectations from the job and the person who wants help can search them by watching their profiles, location, availability, and experience.",
+      "We have used the popular stack MERN stack and I handled the Backend part.",
+      "I built REST apis and stored the user data in MongoDB database. And have implemented the JWT authentication.",
+    ],
   ];
 
   return (
     <div className="my-64">
-      <h2 className="font-bold text-8xl mb-32 w-full text-center">Experience</h2>
+      <h2 className="font-bold text-8xl mb-32 w-full text-center">
+        Experience
+      </h2>
 
       <div ref={ref} className="w-[75%] mx-auto relative">
         <motion.div
           style={{ scaleY: scrollYProgress }}
-          className="absolute left-9 top-0 w-[4px] h-full bg-dark origin-top"
+          initial={{ scaleY: 0 }}
+          // ✅ Added scale-y-0 to prevent first-paint full-height flash
+          className="absolute left-9 top-0 w-[4px] h-full bg-dark origin-top scale-y-0"
         />
 
         <ul className="w-full flex flex-col items-center justify-between ml-4">
-          {experiences.map((exp, idx) => (
-            <Details
-              key={idx}
-              position={exp.position}
-              company={exp.company}
-              companyLink={exp.companyLink}
-              time={exp.time}
-              location={exp.location}
-              work={exp.work}
-            />
-          ))}
+          <Details
+            position="Backend Developer (MSc Dissertation Project)"
+            company="Decision Support Tool for Cyber Security Investment"
+            companyLink="#"
+            time="2025"
+            location="University of Exeter, UK"
+            work={mscProjectDetails}
+          />
+
+          <Details
+            position="FullStack Developer"
+            company="Zigy Prints"
+            companyLink="https://www.linkedin.com/company/zigycustoms/about/"
+            time="Aug, 2023 - Present"
+            location="Remote"
+            work={workDetails[0]}
+          />
+
+          <Details
+            position="Teaching Assistant"
+            company="Rangmashal Foundation"
+            companyLink="https://www.rangmashal.org/"
+            time="Feb, 2023 - Sept, 2023"
+            location="Kolkata, India"
+            work={workDetails[1]}
+          />
+          <Details
+            position="Backend Developer"
+            company="Hack4bengal"
+            companyLink="https://www.hack4bengal.tech/"
+            time="July, 2023"
+            location="Kolkata, India"
+            work={workDetails[3]}
+          />
+
+          <Details
+            position="UI/UX Designer"
+            company="Smart India Hackathon"
+            companyLink="https://www.sih.gov.in/"
+            time="Aug, 2022"
+            location="Chennai, India"
+            work={workDetails[2]}
+          />
+
         </ul>
       </div>
     </div>
