@@ -1,49 +1,78 @@
-import React from "react";
 import Link from "next/link";
-import Logo from "./Logo";
 import { useRouter } from "next/router";
-import {TwitterIcon, GithubIcon, LinkedInIcon, LeetcodeIcon } from "./Icons";
-import {motion} from "framer-motion"
+import { motion } from "framer-motion";
+import { TwitterIcon, GithubIcon, LinkedInIcon, EmailIcon } from "./Icons";
 
-const CustomLink = ({ href, title, className = "" }) => {
-  const router = useRouter()
-  return (
-    <Link href={href} className={`${className} relative group`}>
-      {title}
-      <span className={`h-[1px] inline-block bg-dark absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${router.asPath === href ? 'w-full' : 'w-0'}`}>
-        &nbsp;
-      </span>
-    </Link>
-  );
-};
+const pages = [
+  { href: "/", title: "Home" },
+  { href: "/about", title: "About" },
+  { href: "/projects", title: "Projects" },
+];
+
+const socials = [
+  { href: "https://twitter.com/decode_py", icon: <TwitterIcon />, label: "Twitter" },
+  { href: "https://github.com/Decoder-25", icon: <GithubIcon />, label: "GitHub" },
+  { href: "https://www.linkedin.com/in/disha-biswas-coder/", icon: <LinkedInIcon />, label: "LinkedIn" },
+  { href: "mailto:bidisha2125@gmail.com", icon: <EmailIcon />, label: "Email" },
+];
 
 const Navbar = () => {
+  const router = useRouter();
+
   return (
-    <header className="w-full px-32 py-8 font-medium flex itens-center justify-between">
-      <nav>
-        <CustomLink href="/" title="Home" className="mr-4" />
-        <CustomLink href="/about" title="About" className="mx-4" />
-        <CustomLink href="/projects" title="Projects" className="mx-4" />
-        <CustomLink
-          href="https://disha404.hashnode.dev/"
-          target="_blank"
-          title="Articles"
-          className="ml-4"
-        />
-      </nav>
-      <nav className="flex items-center justify-center flex-wrap">
-        <motion.a href="https://twitter.com/decode_py" target={"_blank"} whileHover={{y: -2}} whiletap={{scale:0.9}} className="w-6 mx-3">
-          <TwitterIcon/>
-        </motion.a>
-        <motion.a href="https://github.com/Decoder-25" target={"_blank"} whileHover={{ y: -2 }} whiletap={{ scale: 0.9 }} className="w-6 mx-3">
-          <GithubIcon/>
-        </motion.a>
-        <motion.a href="https://www.linkedin.com/in/disha-biswas-coder/" target={"_blank"} whileHover={{ y: -2 }} whiletap={{ scale: 0.9 }} className="w-6 ml-3">
-          <LinkedInIcon/>
-        </motion.a>
-      </nav>
-      <div className="absolute left-[50%] top-2 translate-x-[-50%]">
-        <Logo />
+    // sticky + blurred background so it stays on top while you scroll
+    <header className="sticky top-0 z-50 border-b border-zinc-200/70 bg-white/80 backdrop-blur-md">
+      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2 font-bold text-zinc-900">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-primary to-violet-600 text-sm text-white">
+            DB
+          </span>
+          <span className="hidden sm:inline">Disha Biswas</span>
+        </Link>
+
+        {/* Page links — the active page gets a dark pill that slides between links */}
+        <nav className="flex items-center gap-1 rounded-full bg-zinc-100 p-1">
+          {pages.map((page) => {
+            const active = router.pathname === page.href;
+            return (
+              <Link
+                key={page.href}
+                href={page.href}
+                className={`relative rounded-full px-4 py-1.5 text-sm font-semibold transition ${
+                  active ? "text-white" : "text-zinc-600 hover:text-zinc-900"
+                }`}
+              >
+                {active && (
+                  <motion.span
+                    layoutId="active-pill"
+                    className="absolute inset-0 rounded-full bg-zinc-900"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <span className="relative">{page.title}</span>
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* Social icons (hidden on small phones to save space) */}
+        <div className="hidden items-center gap-4 md:flex">
+          {socials.map((s) => (
+            <motion.a
+              key={s.label}
+              href={s.href}
+              target={s.href.startsWith("http") ? "_blank" : undefined}
+              rel="noreferrer"
+              aria-label={s.label}
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.9 }}
+              className="w-5"
+            >
+              {s.icon}
+            </motion.a>
+          ))}
+        </div>
       </div>
     </header>
   );

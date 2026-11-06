@@ -1,158 +1,256 @@
-import React from "react";
+import { useState } from "react";
 import Head from "next/head";
-import Layout from "@/components/Layout";
-import AnimatedText from "@/components/AnimatedText";
-import Link from "next/link";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 import { GithubIcon } from "@/components/Icons";
-import project1 from "../../public/images/projects/Chat_.png";
-import project2 from "../../public/images/projects/React_quiz.png"
-import project3 from "../../public/images/projects/eat-n-split.png"
-import project4 from "../../public/images/projects/smartshala.png"
-import project5 from "../../public/images/projects/helper.png"
-import project6 from "../../public/images/projects/swiggy clone.png"
+import FadeIn from "@/components/FadeIn";
+import { featuredProject, projects } from "@/data/projects";
 
-const FeaturedProject = ({ type, title, summary, img, link, github }) => {
-  return (
-    <article className="w-full flex items-center justify-between relative rounded-br-2xl rounded-3xl border border-solid border-dark bg-light shadow-2xl p-12">
-      <div className="absolute top-0 -right-3 -z-10 w-[101%] h-[103%] rounded-[2.5rem] bg-dark rounded-br-3xl"/>
-      <Link
-        href={link}
+const FILTERS = ["All", "Full Stack", "Frontend"];
+
+// Small pill for a technology name
+const Tag = ({ children }) => (
+  <span className="rounded-full bg-zinc-100 px-3 py-1 text-xs font-semibold text-zinc-600">
+    {children}
+  </span>
+);
+
+// "GitHub" and "Live" buttons
+const Links = ({ github, live }) => (
+  <div className="flex items-center gap-3">
+    {github && (
+      <a
+        href={github}
         target="_blank"
-        className="w-1/2 curser-pointer overflow-hidden rounded-lg"
+        rel="noreferrer"
+        className="flex items-center gap-2 rounded-full bg-zinc-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-zinc-700"
       >
-        <Image src={img} alt={title} className="w-full h-auto" />
-      </Link>
-      <div className="w-1/2 flex flex-col items-start justify-between pl-6">
-        <span className="text-primary font-medium text-xl">{type}</span>
-        <Link
-          href={link}
-          target="_blank"
-          className="hover:underline underline-offset-2"
-        >
-          <h2 className="my-2 w-full text-left text-4xl font-bold">{title}</h2>
-        </Link>
-        <p className="my-2 font-medium text-dark">{summary}</p>
-        <div className="mt-2 flex items-center">
-          <Link href={github} target="_blank" className="w-10">
-            <GithubIcon />
-          </Link>
-          <Link href={link} target="_blank" className="ml-4 rounded-lg bg-dark text-light p-2 px-6 text-lg font-semibold">
-            Visit Project
-          </Link>
-        </div>
-      </div>
-    </article>
+        <span className="w-4">
+          <GithubIcon />
+        </span>
+        Code
+      </a>
+    )}
+    {live && (
+      <a
+        href={live}
+        target="_blank"
+        rel="noreferrer"
+        className="rounded-full border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-800 transition hover:border-primary hover:text-primary"
+      >
+        Live demo ↗
+      </a>
+    )}
+  </div>
+);
+
+// A little animated "attack graph" drawing, used because this project has no screenshot
+const GraphPicture = () => {
+  const nodes = [
+    [60, 150], [160, 70], [160, 230], [270, 120], [270, 210], [370, 150],
+  ];
+  const edges = [
+    [0, 1], [0, 2], [1, 3], [2, 3], [2, 4], [3, 5], [4, 5],
+  ];
+
+  return (
+    <svg viewBox="0 0 430 300" className="h-auto w-full">
+      {edges.map(([a, b], i) => (
+        <motion.line
+          key={i}
+          x1={nodes[a][0]} y1={nodes[a][1]} x2={nodes[b][0]} y2={nodes[b][1]}
+          stroke="white" strokeOpacity="0.5" strokeWidth="2"
+          initial={{ pathLength: 0 }}
+          whileInView={{ pathLength: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: i * 0.15 }}
+        />
+      ))}
+      {/* soft pulse around the target node */}
+      <motion.circle
+        cx={370} cy={150} r={22}
+        fill="#fda4af"
+        animate={{ r: [22, 40], opacity: [0.6, 0] }}
+        transition={{ duration: 1.8, repeat: Infinity }}
+      />
+      {nodes.map(([x, y], i) => (
+        <motion.circle
+          key={i}
+          cx={x} cy={y}
+          r={i === 5 ? 22 : 14}
+          fill={i === 5 ? "#fda4af" : "white"}
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ type: "spring", delay: 0.3 + i * 0.1 }}
+        />
+      ))}
+    </svg>
   );
 };
 
-const Project = ({title, type, img, summary, link, github}) => {
-  return(
-    <article className="w-full flex flex-col items-center justify-center rounded-2xl border border-solid border-dark bg-light p-6 relative">
-      <div className="absolute top-0 -right-3 -z-10 w-[101%] h-[103%] rounded-[2rem] bg-dark rounded-br-3xl" />
-      <Link
-        href={link}
-        target="_blank"
-        className="w-full curser-pointer overflow-hidden rounded-lg"
-      >
-        <Image src={img} alt={title} className="w-full h-auto" />
-      </Link>
-      <div className="w-full flex flex-col items-start justify-between mt-4">
-        <span className="text-primary font-medium text-xl">{type}</span>
-        <Link
-          href={link}
-          target="_blank"
-          className="hover:underline underline-offset-2"
-        >
-          <h2 className="my-2 w-full text-left text-4xl font-bold">{title}</h2>
-        </Link>
-        <p className="my-2 font-medium text-dark">{summary}</p>
-        <div className="mt-2 flex items-center">
-          <Link href={github} target="_blank" className="w-10">
-            <GithubIcon />
-          </Link>
-          <Link href={link} target="_blank" className="ml-4 rounded-lg bg-dark text-light p-2 px-6 text-lg font-semibold">
-            Visit Project
-          </Link>
+const FeaturedProject = ({ project }) => (
+  <FadeIn>
+    <article className="grid overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm md:grid-cols-2">
+      <div className="flex min-h-[260px] flex-col items-center justify-center gap-4 bg-gradient-to-br from-primary to-violet-600 p-8">
+        <GraphPicture />
+        <p className="text-center text-sm font-medium text-white/80">
+          Attack graph → cheapest set of controls that keeps the target safe
+        </p>
+      </div>
+
+      <div className="p-8 md:p-10">
+        <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+          ★ Featured · {project.label}
+        </span>
+        <h2 className="mt-4 text-2xl font-bold leading-snug text-zinc-900 md:text-3xl">
+          {project.title}
+        </h2>
+        <p className="mt-3 leading-relaxed text-zinc-600">{project.summary}</p>
+
+        <ul className="mt-5 space-y-2 text-sm text-zinc-600">
+          {project.highlights.map((point) => (
+            <li key={point} className="flex gap-2">
+              <span className="text-primary">✓</span>
+              {point}
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-6 flex flex-wrap gap-2">
+          {project.tech.map((t) => (
+            <Tag key={t}>{t}</Tag>
+          ))}
+        </div>
+
+        <div className="mt-8">
+          <Links github={project.github} live={project.live} />
         </div>
       </div>
     </article>
-  )
-}
+  </FadeIn>
+);
 
-const projects = () => {
+const ProjectCard = ({ project }) => (
+  <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+    <div className="relative overflow-hidden border-b border-zinc-100">
+      <Image
+        src={project.image}
+        alt={project.title}
+        className="h-auto w-full transition duration-500 group-hover:scale-105"
+      />
+      {project.status && (
+        <span className="absolute right-4 top-4 rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-800 shadow">
+          {project.status}
+        </span>
+      )}
+    </div>
+
+    <div className="flex flex-1 flex-col p-6">
+      <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+        {project.category}
+      </p>
+      <h3 className="mt-2 text-xl font-bold text-zinc-900">{project.title}</h3>
+      <p className="mt-2 flex-1 text-[15px] leading-relaxed text-zinc-600">{project.summary}</p>
+
+      <div className="mt-4 flex flex-wrap gap-2">
+        {project.tech.map((t) => (
+          <Tag key={t}>{t}</Tag>
+        ))}
+      </div>
+
+      <div className="mt-6">
+        <Links github={project.github} live={project.live} />
+      </div>
+    </div>
+  </article>
+);
+
+const Projects = () => {
+  const [filter, setFilter] = useState("All");
+
+  const shown = filter === "All" ? projects : projects.filter((p) => p.category === filter);
+
   return (
     <>
       <Head>
-        <title>Disha | Projects Page</title>
+        <title>Disha | Projects</title>
         <meta
           name="description"
-          content="This is my portfolio website. I am a developer, I am open for collaboration in fullstack projects."
+          content="Projects by Disha Biswas — backend, cloud and full-stack work."
         />
       </Head>
-      <main className="w-full mb-16 flex flex-col items-center justify-center">
-        <Layout className="pt-16">
-          <AnimatedText text="Imagination Trumps Knowledge!" className="mb-16 " />
 
-          <div className="grid grid-cols-12 gap-24 gap-y-32">
-            <div className="col-span-12">
-              <FeaturedProject
-                title="Chat-A-Chat"
-                img={project1}
-                summary="This MERN stack chat application, powered by Socket.io for real-time messaging and Chakra UI for an elegant interface, offers instant and user-friendly communication. With MongoDB, Express.js, React, and Node.js at its core, it ensures both efficient functionality and a visually appealing user experience, making it ideal for various communication needs."
-                link="/"
-                github="https://github.com/Decoder-25/Chat-App_Socket.Io"
-                type="Featured Project"
-              />
-            </div>
-            <div className="col-span-6">
-              <Project title="React Quiz App"
-                img={project2}
-                summary="Welcome to the React Quiz App, a fun and interactive quiz game built with React! Test your knowledge, challenge your friends, and strive for the highscore. This app is designed to help you understand how to create a simple quiz application using React and a mock server."
-                link="https://the-react-quiz.netlify.app/"
-                github="https://github.com/Decoder-25/Quiz-App"
-                type="Featured Project" />
-            </div>
-            <div className="col-span-6">
-              <Project 
-                title="Eat-N-Split"
-                img={project3}
-                summary="This user-friendly React-based web application simplifies the process of splitting bills with your friends. It offers convenient features such as managing your list of friends, selecting them for bill splitting, and tracking shared expenses, making group financial planning and coordination a seamless experience."
-                link="https://eat-n-split-dun-one.vercel.app/"
-                github="https://github.com/Decoder-25/eat-n-split"
-                type="Featured Project" />
-            </div>
-            <div className="col-span-12">
-              <FeaturedProject 
-                title="SmartShala"
-                img={project4}
-                summary="We developed this application using Flutter for the frontend and Python for the backend. My primary responsibility was designing the interface. The app serves as an educational tool, enabling teachers to monitor students' comprehension of classroom material. However, it comes with a unique twist: teachers can only access the application through a smart device, while students respond to questions using traditional pen-and-paper methods."
-                link="https://www.youtube.com/watch?v=FgbjfAlIFVY"
-                github="https://github.com/SmartShala"
-                type="Featured Project" />
-            </div>
-            <div className="col-span-6">
-              <Project 
-                title="Helper"
-                img={project5}
-                summary="During the hackathon, we developed a web application aimed at connecting individuals in need of assistance for their daily household tasks, such as housekeeping, driving, cooking, night guarding, tutoring, or caregiving, with suitable helpers. Job seekers can create accounts by submitting detailed profiles, including their job expectations. Meanwhile, those seeking help can search for helpers based on their profiles, location, availability, and level of experience."
-                link="/"
-                github="https://github.com/Decoder-25/Helper_Hack4Bengal"
-                type="On Progress" />
-            </div>
-            <div className="col-span-6">
-              <Project title="Swiggy Clone"
-                img={project6}
-                summary="The Swiggy clone app is a food delivery application inspired by Swiggy. It allows users to order food from local restaurants, offers a variety of cuisine choices, tracks orders in real-time, and provides secure payment options. Restaurants can partner with the app to expand their customer reach, and delivery drivers can earn income by delivering orders. Overall, it replicates the core features and functionality of the popular Swiggy platform, enabling convenient and efficient food delivery services."
-                link="/"
-                github="https://github.com/Decoder-25/Food-Delivery"
-                type="On Progress" />
-              </div>
-          </div>
-        </Layout>
-      </main>
+      <div className="mx-auto max-w-5xl px-6 pb-24 pt-12 md:pt-20">
+        {/* ---------- Heading ---------- */}
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="text-sm font-semibold uppercase tracking-widest text-primary"
+        >
+          Projects
+        </motion.p>
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mt-3 text-4xl font-bold text-zinc-900 md:text-5xl"
+        >
+          Things I&apos;ve built
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className="mt-4 max-w-2xl text-[17px] leading-relaxed text-zinc-600"
+        >
+          From optimisation engines on AWS to real-time chat apps — a mix of research,
+          hackathon and side projects.
+        </motion.p>
+
+        {/* ---------- Featured ---------- */}
+        <div className="mt-12">
+          <FeaturedProject project={featuredProject} />
+        </div>
+
+        {/* ---------- Filter buttons ---------- */}
+        <div className="mt-16 flex flex-wrap gap-2">
+          {FILTERS.map((name) => (
+            <button
+              key={name}
+              onClick={() => setFilter(name)}
+              className={`rounded-full px-5 py-2 text-sm font-semibold transition ${
+                filter === name
+                  ? "bg-zinc-900 text-white"
+                  : "bg-white text-zinc-600 ring-1 ring-zinc-200 hover:ring-zinc-400"
+              }`}
+            >
+              {name}
+            </button>
+          ))}
+        </div>
+
+        {/* ---------- All projects ---------- */}
+        <motion.div layout className="mt-8 grid gap-8 md:grid-cols-2">
+          <AnimatePresence mode="popLayout">
+            {shown.map((project) => (
+              <motion.div
+                key={project.title}
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ProjectCard project={project} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+      </div>
     </>
   );
 };
 
-export default projects;
+export default Projects;

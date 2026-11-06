@@ -1,30 +1,18 @@
-import React from "react";
-import Layout from "./Layout";
-import Link from "next/link";
-
 const Footer = () => {
   return (
-    <footer className="w-full border-t-2 border-solid border-dark font-medium text-lg">
-      <Layout className="py-8 flex items-center justify-between">
-        <span>{new Date().getFullYear()} &copy; All rights reserved</span>
-        <div className="flex items-center">
-          Build With <span className="text-primary text-2xl px-1">&#9825;</span>{" "}
-          by&nbsp;{" "}
-          <Link
-            href="https://www.linkedin.com/in/disha-biswas-coder/"
-            className="underline underline-offset-2"
-          >
-            Disha
-          </Link>
-        </div>
-        <Link
-          href="https://www.linkedin.com/in/disha-biswas-coder/"
-          target={"_blank"}
-          className="underline underline-offset-2"
+    <footer className="border-t border-zinc-200 bg-white">
+      <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 px-6 py-8 text-sm text-zinc-500 md:flex-row">
+        <span>© {new Date().getFullYear()} Disha Biswas</span>
+        <span>
+          Built with <span className="text-primary">♥</span> using Next.js, Tailwind & Framer Motion
+        </span>
+        <a
+          href="mailto:bidisha2125@gmail.com"
+          className="font-semibold text-zinc-800 transition hover:text-primary"
         >
-          Say hello
-        </Link>
-      </Layout>
+          Say hello →
+        </a>
+      </div>
     </footer>
   );
 };

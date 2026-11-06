@@ -63,7 +63,6 @@ This stunning portfolio website includes the following key features:
 
 - **My Projects Page**: Showcase your portfolio of projects, complete with descriptions, images, and links to the project repositories or live demos. 🛠️
 
-- **Articles Page**: Share your knowledge and insights through articles or blog posts on topics related to your field. 📝
 
 - **Contact Me via Email**: An easy way for visitors to get in touch with you. They can use the provided contact form or send you an email directly. ✉️
 
