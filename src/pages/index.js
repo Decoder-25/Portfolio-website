@@ -82,7 +82,7 @@ export default function Home() {
 
             <motion.div {...appear(0.4)} className="mt-8 flex flex-wrap items-center gap-3">
               <a
-                href="/Disha_Biswas_v1.pdf"
+                href="/Disha_Resume.pdf"
                 download
                 className="rounded-full bg-zinc-900 px-6 py-3 font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-zinc-700"
               >
